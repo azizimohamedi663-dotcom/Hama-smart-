@@ -44,13 +44,6 @@ div[data-testid="stImage"] {text-align: center;}
 .stButton>button {background:#FF6B00; color:white; border-radius:10px; height:3em; font-weight:bold; width:100%}
 </style>
 """, unsafe_allow_html=True)
-
-# LOGO
-try:
-    st.image("Hama smart.jpg", use_container_width=True)
-except:
-    st.image("logo.png", use_container_width=True)
-
 try:
     st.image("image_20260920_054207.webp", use_container_width=True)
 except:
