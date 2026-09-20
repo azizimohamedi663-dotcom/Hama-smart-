@@ -2,7 +2,13 @@ import streamlit as st
 import sqlite3
 import os, json, urllib.request
 from datetime import datetime
-
+st.set_page_config(page_title="HAMA SMART", page_icon="🚚", layout="centered")
+‎
+‎# Logo - jaribu kupakia ya kwako
+‎try:
+‎    st.image("Hama smart.jpg", width=200)
+‎except:
+‎    st.markdown("## 🚚 HAMA SMART")
 # --- BADILISHA HAPA TU ---
 NMB_ACCOUNT_NUMBER = "22810064566" # Weka Account Number yako ya NMB hapa
 NMB_ACCOUNT_NAME = "AZIZI FRENK MOHAMEDI"
