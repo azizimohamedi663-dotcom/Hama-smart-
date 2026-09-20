@@ -75,7 +75,20 @@ if "Mteja" in menu:
                     c.execute("INSERT INTO orders VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?)",(mteja_s,simu_s,kutoka,kwenda,km,jumla,comm,pay,did,f'paid_{ref}',str(datetime.now())))
                     conn.commit(); st.balloons(); st.success(f"Oda #{c.lastrowid} imethibitishwa! Dereva {jina} anakuja. Ref: {ref}")
                     st.link_button(f"WhatsApp {jina}", f"https://wa.me/255{simu[-9:]}?text=Habari {jina}, nimelipa HAMA kutoka {kutoka} kwenda {kwenda}")
-
+elif menu == "🧑‍✈️ Dereva - Map":
+‎    st.info("📍 Mteja yupo hapa - Bonyeza kwenda Google Maps")
+‎    st.map(pd.DataFrame([{"lat":-6.7924,"lon":39.2083}]))
+‎    st.link_button("🗺️ Fungua Google Maps - Mteja", "https://maps.google.com/?q=-6.7924,39.2083")
+‎
+‎elif menu == "📦 Fuatilia Mzigo LIVE":
+‎    track = st.text_input("Weka Namba ya Oda")
+‎    if track:
+‎        prog = st.slider("Safari imefika %", 0, 100, 50)
+‎        lat_cur = -6.79 + (prog/100)*3.4
+‎        lon_cur = 39.20 + (prog/100)*-2.5
+‎        st.map(pd.DataFrame([{"lat":lat_cur,"lon":lon_cur}]))
+‎        st.metric("Gari Lipo", f"{prog}% njiani")
+‎
 elif "Dereva" in menu:
     jina=st.text_input("Jina kamili"); simu=st.text_input("Simu 07.."); ng=st.text_input("Namba ya Gari")
     aina=st.selectbox("Aina ya gari lako", AINA_ZA_MAGARI)
