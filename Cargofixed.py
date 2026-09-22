@@ -2,7 +2,7 @@ import streamlit as st
 import sqlite3, pandas as pd, random, time, math, os
 from datetime import datetime
 
-st.set_page_config(page_title="HAMA V6.5 FIXED", page_icon="🚚", layout="centered")
+st.set_page_config(page_title="HAMA SMART", page_icon="🚚", layout="centered")
 
 NMB_ACC = "22810064566"
 BASE_FEE = 15000
