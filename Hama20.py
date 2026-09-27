@@ -1,4 +1,77 @@
 import streamlit as st
+from streamlit.components.v1 import html
+import base64
+
+# ==== HAMA PWA CODE - WEKA JUU KABISA ====
+pwa_code = """
+<link rel="manifest" href='data:application/json;base64,eyJuYW1lIjogIkhBTUEgU01BUlQgQVBQIn0='>
+<meta name="theme-color" content="#FF6B00">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="HAMA">
+<link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3774/3774080.png">
+
+<script>
+// Service Worker ya HAMA
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register(URL.createObjectURL(new Blob([`
+    self.addEventListener('install', e => self.skipWaiting());
+    self.addEventListener('fetch', e => e.respondWith(fetch(e.request)));
+  `], {type: 'text/javascript'})));
+}
+
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('hama-install').style.display = 'block';
+});
+
+function installHama(){
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(r => {
+      document.getElementById('hama-install').style.display='none';
+      deferredPrompt=null;
+    });
+  }
+}
+</script>
+
+<style>
+#hama-install{
+  display:none;
+  position:fixed;
+  bottom:20px; left:15px; right:15px;
+  background:#FF6B00; color:white;
+  padding:16px; border-radius:18px;
+  text-align:center; z-index:99999;
+  box-shadow:0 8px 25px rgba(0,0,0,0.4);
+}
+#hama-install button{
+  background:white; color:#FF6B00;
+  border:none; padding:10px 28px;
+  border-radius:25px; font-weight:900;
+  margin-top:10px; font-size:16px;
+}
+</style>
+
+<div id="hama-install">
+  <div style="font-size:18px; font-weight:900;">📲 INSTALL HAMA APP</div>
+  <div style="font-size:13px; margin-top:4px;">Iwe kama App ya kawaida kwenye simu yako</div>
+  <button onclick="installHama()">INSTALL SASA - BURE</button>
+  <div onclick="this.parentElement.style.display='none'" style="margin-top:8px; font-size:11px; opacity:0.8;">Sio sasa</div>
+</div>
+"""
+
+# Inject PWA
+html(pwa_code, height=0)
+
+st.set_page_config(
+    page_title="HAMA SMART APP",
+    page_icon="🚚",
+    layout="centered"
+)
+import streamlit as st
 import sqlite3, pandas as pd, random, time, math, os
 from datetime import datetime
 
