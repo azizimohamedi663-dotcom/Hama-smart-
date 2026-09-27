@@ -1,4 +1,21 @@
 import streamlit as st
+
+st.set_page_config(
+    page_title="HAMA SMART APP",
+    page_icon="https://i.imgur.com/8QJ4sQj.png",  # Icon ya HAMA
+    layout="centered"
+)
+
+# Badilisha favicon na icon ya Home Screen
+st.markdown("""
+<link rel="icon" href="https://i.imgur.com/8QJ4sQj.png">
+<link rel="apple-touch-icon" href="https://i.imgur.com/8QJ4sQj.png">
+<link rel="apple-touch-icon" sizes="512x512" href="https://i.imgur.com/8QJ4sQj.png">
+<script>
+document.querySelector('link[rel*=\"icon\"]').href = 'https://i.imgur.com/8QJ4sQj.png';
+</script>
+""", unsafe_allow_html=True)
+import streamlit as st
 from streamlit.components.v1 import html
 
 # ===== FIX YA INSTALL BUTTON - VERSION 2 =====
